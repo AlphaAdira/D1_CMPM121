@@ -4,16 +4,22 @@ import "./style.css";
 let counter = 0;
 
 document.body.innerHTML = `
-  <p>Example image asset:</p>
+  <h1>CMPM 121 Project</h1>
   <p>Boops: <span id="counter">${counter}</span></p>
   <button id="increment"><img src="${exampleIconUrl}" class="icon" /></button>
-`;
+  `;
 
 // Add click handler
 const button = document.getElementById("increment")!;
 const counterElement = document.getElementById("counter")!;
 
-button.addEventListener("click", () => {
+function addCookie() {
   counter++;
   counterElement.textContent = counter.toString();
+}
+
+button.addEventListener("click", () => {
+  addCookie();
 });
+
+setInterval(addCookie, 1000);
