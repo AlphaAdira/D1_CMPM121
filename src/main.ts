@@ -4,7 +4,7 @@ import "./style.css";
 let counter = 0;
 
 document.body.innerHTML = `
-  <h1>CMPM 121 Project</h1>
+  <h1>Adira's D1 Project</h1>
   <p>Boops: <span id="counter">${counter}</span></p>
   <button id="increment"><img src="${exampleIconUrl}" class="icon" /></button>
   `;
