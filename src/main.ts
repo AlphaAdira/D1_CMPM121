@@ -13,13 +13,20 @@ document.body.innerHTML = `
 const button = document.getElementById("increment")!;
 const counterElement = document.getElementById("counter")!;
 
+let reanimate = 0;
 function addCookie() {
-  counter++;
-  counterElement.textContent = counter.toString();
+  reanimate++;
+  requestAnimationFrame(addCookie);
+  if (reanimate >= 100) {
+    counter++;
+    counterElement.textContent = counter.toString();
+    reanimate = 0;
+  }
 }
 
 button.addEventListener("click", () => {
-  addCookie();
+  counter++;
+  counterElement.textContent = counter.toString();
 });
 
-setInterval(addCookie, 1000);
+requestAnimationFrame(addCookie);
