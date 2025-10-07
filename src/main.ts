@@ -21,13 +21,14 @@ document.head.innerHTML = `
     #increment {
       background: none;
       border: none;
+    }
+    .icon:hover {
+      transform: scale(1.1);
       cursor: pointer;
     }
-    #increment:hover {
-      transform: scale(1.1);
-    }
-    #increment:active {
+    .icon:active {
       transform: scale(0.9);
+      cursor: pointer;
     }
   </style>
 `;
@@ -47,14 +48,14 @@ button.addEventListener("click", () => {
   counterElement.textContent = counter.toString();
 });
 
-let reanimate = 0;
-function addCookie() {
+let reanimate: number = 0;
+function autoClicker() {
   reanimate++;
-  requestAnimationFrame(addCookie);
+  requestAnimationFrame(autoClicker);
   if (reanimate >= 100) {
     counter++;
     counterElement.textContent = counter.toString();
     reanimate = 0;
   }
 }
-requestAnimationFrame(addCookie);
+requestAnimationFrame(autoClicker);
