@@ -2,7 +2,7 @@ import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 import "./style.css";
 
 let counter = 0;
-let growthRate = 1;
+let growthRate = 0;
 
 document.head.innerHTML = `
   <title>Adira's D1 Project</title>
@@ -35,15 +35,32 @@ document.body.innerHTML = `
   <h1>Adira's D1 Project</h1>
   <p>Boops: <span id="counter">${counter}</span></p>
   <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
+  <div id="autoClickerInfo">
+    <p>You can buy an AutoCLicker!!!\nJust click below when you have <span id="price">${
+  10 * growthRate + 10
+}</span> boops!</p>
+    <div id="purchase"><img src="${exampleIconUrl}" class="icon" /></div>
+  </div>
   `;
 
 // Add click handler
-const button = document.getElementById("increment")!;
+const clickMeButton = document.getElementById("increment")!;
+const autoClickButton = document.getElementById("purchase")!;
 const counterElement = document.getElementById("counter")!;
+const priceElement = document.getElementById("price")!;
 
-button.addEventListener("click", () => {
+clickMeButton.addEventListener("click", () => {
   counter++;
   counterElement.textContent = counter.toString();
+});
+
+autoClickButton.addEventListener("click", () => {
+  if (counter >= 10 * growthRate + 10) {
+    counter -= 10 * growthRate + 10;
+    growthRate++;
+    counterElement.textContent = counter.toString();
+    priceElement.textContent = (10 * growthRate + 10).toString();
+  }
 });
 
 let t0: number = performance.now();
