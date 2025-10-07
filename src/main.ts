@@ -42,6 +42,12 @@ document.body.innerHTML = `
 const button = document.getElementById("increment")!;
 const counterElement = document.getElementById("counter")!;
 
+
+button.addEventListener("click", () => {
+  counter++;
+  counterElement.textContent = counter.toString();
+});
+
 let reanimate = 0;
 function addCookie() {
   reanimate++;
@@ -52,10 +58,4 @@ function addCookie() {
     reanimate = 0;
   }
 }
-
-button.addEventListener("click", () => {
-  counter++;
-  counterElement.textContent = counter.toString();
-});
-
 requestAnimationFrame(addCookie);
