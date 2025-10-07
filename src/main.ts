@@ -42,7 +42,6 @@ document.body.innerHTML = `
 const button = document.getElementById("increment")!;
 const counterElement = document.getElementById("counter")!;
 
-
 button.addEventListener("click", () => {
   counter++;
   counterElement.textContent = counter.toString();
