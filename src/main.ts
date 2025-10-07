@@ -2,9 +2,7 @@ import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 import "./style.css";
 
 let counter = 0;
-const t0 = performance.now();
-//const t1 = performance.now();
-console.log(t0);
+let growthRate = 1;
 
 document.head.innerHTML = `
   <title>Adira's D1 Project</title>
@@ -48,14 +46,16 @@ button.addEventListener("click", () => {
   counterElement.textContent = counter.toString();
 });
 
-let reanimate: number = 0;
+let t0: number = performance.now();
+console.log(t0);
+let t1: number = -1;
 function autoClicker() {
-  reanimate++;
-  requestAnimationFrame(autoClicker);
-  if (reanimate >= 100) {
-    counter++;
+  t1 = performance.now();
+  if (t1 - t0 >= 1000) {
+    counter += growthRate;
     counterElement.textContent = counter.toString();
-    reanimate = 0;
+    t0 = t1;
   }
+  requestAnimationFrame(autoClicker);
 }
 requestAnimationFrame(autoClicker);
