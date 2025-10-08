@@ -36,7 +36,7 @@ document.body.innerHTML = `
   <p>Boops: <span id="counter">${counter}</span></p>
   <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
   <div id="autoClickerInfo">
-    <p>You can buy an AutoCLicker!!!\nJust click below when you have <span id="price">${
+    <p>You can buy an AutoClicker!!!\nJust click below when you have <span id="price">${
   10 * growthRate + 10
 }</span> boops!</p>
     <div id="purchase"><img src="${exampleIconUrl}" class="icon" /></div>
