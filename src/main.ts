@@ -1,5 +1,4 @@
 import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
-import "./style.css";
 
 let counter = 0;
 let growthRate = 0;
@@ -11,6 +10,7 @@ document.head.innerHTML = `
       font-family: system-ui, sans-serif;
       text-align: center;
       margin-top: 5rem;
+      background: #deadaf;
     }
     .icon {
       width: 100px;
