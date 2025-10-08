@@ -3,6 +3,7 @@ import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 
 let counter = 0;
 let growthRate = 0;
+let numberOfBats: number = 0;
 
 document.head.innerHTML = `
   <title>Adira's D1 Project</title>
@@ -39,7 +40,7 @@ document.body.innerHTML = `
   <p>Drops of Blood: <span id="counter">${counter}</span></p>
   <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
   <div id="autoClickerInfo">
-    <p></p>
+    <p>🦇: <span id="batCounter">${numberOfBats}</span></p>
     <p>You can buy Vampire Bat to help!!!</p>
     <p>Just click below when you have <span id="price">${
   10 * growthRate + 10
@@ -52,6 +53,7 @@ document.body.innerHTML = `
 const clickMeButton = document.getElementById("increment")!;
 const autoClickButton = document.getElementById("purchase")!;
 const counterElement = document.getElementById("counter")!;
+const batElement = document.getElementById("batCounter")!;
 const priceElement = document.getElementById("price")!;
 
 clickMeButton.addEventListener("click", () => {
@@ -65,6 +67,8 @@ autoClickButton.addEventListener("click", () => {
   if (counter >= Math.floor(clickerPrice)) {
     counter -= Math.floor(clickerPrice);
     growthRate++;
+    numberOfBats += 1;
+    batElement.textContent = numberOfBats.toString();
     clickerPrice += 1.15 * (10 * growthRate);
     console.log(clickerPrice);
     counterElement.textContent = counter.toString();
