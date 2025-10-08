@@ -1,3 +1,4 @@
+import batPNG from "./bat.png";
 import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 
 let counter = 0;
@@ -8,9 +9,10 @@ document.head.innerHTML = `
   <style>
     body {
       font-family: system-ui, sans-serif;
+      color: #6b0004ff;
       text-align: center;
       margin-top: 5rem;
-      background: #deadaf;
+      background: #737373ff;
     }
     .icon {
       width: 100px;
@@ -32,14 +34,17 @@ document.head.innerHTML = `
 `;
 
 document.body.innerHTML = `
-  <h1>Adira's D1 Project</h1>
-  <p>Boops: <span id="counter">${counter}</span></p>
+  <h1>Blood Drive</h1>
+  <h3>You're a vampire! Get more blood to become stronger!</h3>
+  <p>Drops of Blood: <span id="counter">${counter}</span></p>
   <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
   <div id="autoClickerInfo">
-    <p>You can buy an AutoClicker!!!\nJust click below when you have <span id="price">${
+    <p></p>
+    <p>You can buy Vampire Bat to help!!!</p>
+    <p>Just click below when you have <span id="price">${
   10 * growthRate + 10
-}</span> boops!</p>
-    <div id="purchase"><img src="${exampleIconUrl}" class="icon" /></div>
+}</span> drops of blood!</p>
+    <div id="purchase"><img src="${batPNG}" class="icon" /></div>
   </div>
   `;
 
@@ -54,12 +59,16 @@ clickMeButton.addEventListener("click", () => {
   counterElement.textContent = counter.toString();
 });
 
+let clickerPrice = 10 * growthRate + 10;
+
 autoClickButton.addEventListener("click", () => {
-  if (counter >= 10 * growthRate + 10) {
-    counter -= 10 * growthRate + 10;
+  if (counter >= Math.floor(clickerPrice)) {
+    counter -= Math.floor(clickerPrice);
     growthRate++;
+    clickerPrice += 1.15 * (10 * growthRate);
+    console.log(clickerPrice);
     counterElement.textContent = counter.toString();
-    priceElement.textContent = (10 * growthRate + 10).toString();
+    priceElement.textContent = (Math.floor(clickerPrice)).toString();
   }
 });
 
