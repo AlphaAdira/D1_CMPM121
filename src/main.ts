@@ -20,12 +20,10 @@ document.head.innerHTML = `
       border: none;
     }
     #top {
-      background: #000000;
       width: 100vw;
       height: 15vh;
     }
     .half {
-      background: #ffffff;
       width: 50vw;
       height: 85vh;
     }
