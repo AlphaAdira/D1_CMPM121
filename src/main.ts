@@ -21,11 +21,11 @@ document.head.innerHTML = `
     }
     #top {
       width: 100vw;
-      height: 15vh;
+      height: 25vh;
     }
     .half {
       width: 50vw;
-      height: 85vh;
+      height: 75vh;
     }
     .icon {
       width: 100px;
@@ -51,6 +51,9 @@ document.head.innerHTML = `
       transform: scale(0.9);
       cursor: pointer;
     }
+      .flex {
+        display: flex
+      }
   </style>
 `;
 
@@ -59,17 +62,19 @@ document.body.innerHTML = `
     <h1>Blood Drive</h1>
     <h3>You're a vampire! Get more blood to become stronger!</h3>
   </div>
-  <div class = "half">
-    <p>Drops of Blood: <span id="counter">${counter}</span></p>
-    <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
-  </div>
-  <div id="autoClickerInfo">
-    <p>🦇: <span id="batCounter">${numberOfBats}</span></p>
-    <p>You can buy Vampire Bat to help!!!</p>
-    <p>Just click below when you have <span id="price">${
-  10 * growthRate + 10
-}</span> drops of blood!</p>
-    <div id="purchase"><img src="${batPNG}" class="buy" /></div>
+  <div class = "flex">
+    <div class = "half">
+      <p>Drops of Blood: <span id="counter">${counter}</span></p>
+      <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
+      <p>🦇: <span id="batCounter">${numberOfBats}</span></p>
+    </div>
+    <div id="autoClickerInfo" class = "half">
+      <p>You can buy Vampire Bat to help!!!</p>
+      <p>Just click below when you have <span id="price">${
+    10 * growthRate + 10
+  }</span> drops of blood!</p>
+      <div id="purchase"><img src="${batPNG}" class="buy" /></div>
+    </div>
   </div>
   `;
 
