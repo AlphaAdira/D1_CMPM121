@@ -15,13 +15,23 @@ document.head.innerHTML = `
       margin-top: 5rem;
       background: #737373ff;
     }
-    .icon {
-      width: 100px;
-      height: 100px;
-    }
     #increment {
       background: none;
       border: none;
+    }
+    #top {
+      background: #000000;
+      width: 100vw;
+      height: 15vh;
+    }
+    .half {
+      background: #ffffff;
+      width: 50vw;
+      height: 85vh;
+    }
+    .icon {
+      width: 100px;
+      height: 100px;
     }
     .icon:hover {
       transform: scale(1.1);
@@ -31,21 +41,37 @@ document.head.innerHTML = `
       transform: scale(0.9);
       cursor: pointer;
     }
+    .buy {
+      width: 100px;
+      height: 100px;
+    }
+    .buy:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+    .buy:active {
+      transform: scale(0.9);
+      cursor: pointer;
+    }
   </style>
 `;
 
 document.body.innerHTML = `
-  <h1>Blood Drive</h1>
-  <h3>You're a vampire! Get more blood to become stronger!</h3>
-  <p>Drops of Blood: <span id="counter">${counter}</span></p>
-  <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
+  <div id = "top">
+    <h1>Blood Drive</h1>
+    <h3>You're a vampire! Get more blood to become stronger!</h3>
+  </div>
+  <div class = "half">
+    <p>Drops of Blood: <span id="counter">${counter}</span></p>
+    <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
+  </div>
   <div id="autoClickerInfo">
     <p>🦇: <span id="batCounter">${numberOfBats}</span></p>
     <p>You can buy Vampire Bat to help!!!</p>
     <p>Just click below when you have <span id="price">${
   10 * growthRate + 10
 }</span> drops of blood!</p>
-    <div id="purchase"><img src="${batPNG}" class="icon" /></div>
+    <div id="purchase"><img src="${batPNG}" class="buy" /></div>
   </div>
   `;
 
