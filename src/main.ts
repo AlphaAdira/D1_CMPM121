@@ -14,6 +14,7 @@ document.head.innerHTML = `
       text-align: center;
       margin-top: 5rem;
       background: #737373ff;
+      overflow: hidden;
     }
     #increment {
       background: none;
@@ -56,15 +57,6 @@ document.head.innerHTML = `
     }
     .flex {
       display: flex
-    }
-    .sparkle {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: red;
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    animation: sparkle-animation 2s ease-in-out infinite;
-    pointer-events: none;
     }
   </style>
 `;
