@@ -27,6 +27,9 @@ document.head.innerHTML = `
     .half {
       width: 50vw;
     }
+    .quarter {
+      width: 25vw;
+    }
     .icon {
       width: 200px;
       height: 200px;
@@ -76,19 +79,17 @@ document.body.innerHTML = `
       <p>🦇: <span id="batCounter">${numberOfBats}</span></p>
     </div>
     <div id = "shopArea" class = "half">
-      <div id="autoClickerInfo">
-        <p>You can buy Vampire Bat to help!!!</br>
-        Click below when you have <span id="price">${
-  10 * growthRate + 10
-}</span> drops of blood!</p>
-        <div id="purchase"><img src="${batPNG}" class="buy" /></div>
+      <div id="autoClickerInfo" class = "flex">
+        <div class = "quarter"><p>You can buy Vampire Bat to help!!!</br>
+        Click this bat when you have </br><span id="price">
+        ${10 * growthRate + 10}</span> drops of blood!</p></div>
+        <div id="purchase" class = "quarter"><img src="${batPNG}" class="buy" /></div>
       </div>
-      <div id="extraHandsInfo">
-        <p>Why don't we invite some friends to help</br>
-        Click below when you have <span id="price">${
-  20 * growthRate + 100
-}</span> drops of blood!</p>
-        <div id="purchase"><img src="${batPNG}" class="buy" /></div>
+      <div id="extraHandsInfo" class = "flex">
+        <p class = "quarter">Why don't we invite some friends to help</br>
+        Click below when you have </br><span id="price">
+        ${20 * growthRate + 100}</span> drops of blood!</p>
+        <div id="purchase" class = "quarter"><img src="${batPNG}" class="buy" /></div>
       </div>
     </div>
   </div>
