@@ -26,11 +26,10 @@ document.head.innerHTML = `
     }
     .half {
       width: 50vw;
-      height: 75vh;
     }
     .icon {
-      width: 100px;
-      height: 100px;
+      width: 200px;
+      height: 200px;
     }
     .icon:hover {
       transform: scale(1.1);
@@ -40,8 +39,11 @@ document.head.innerHTML = `
       transform: scale(0.9);
       cursor: pointer;
     }
-    #autoInfoButton {
-      height: 0vh;
+    #autoClickerInfo {
+      display: none;
+    }
+    #extraHandsInfo {
+      display: none;
     }
     .buy {
       width: 100px;
@@ -73,12 +75,21 @@ document.body.innerHTML = `
       <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
       <p>🦇: <span id="batCounter">${numberOfBats}</span></p>
     </div>
-    <div id="autoClickerInfo">
-      <p>You can buy Vampire Bat to help!!!</br>
-      Just click below when you have <span id="price">${
+    <div id = "shopArea" class = "half">
+      <div id="autoClickerInfo">
+        <p>You can buy Vampire Bat to help!!!</br>
+        Click below when you have <span id="price">${
   10 * growthRate + 10
 }</span> drops of blood!</p>
-      <div id="purchase"><img src="${batPNG}" class="buy" /></div>
+        <div id="purchase"><img src="${batPNG}" class="buy" /></div>
+      </div>
+      <div id="extraHandsInfo">
+        <p>Why don't we invite some friends to help</br>
+        Click below when you have <span id="price">${
+  20 * growthRate + 100
+}</span> drops of blood!</p>
+        <div id="purchase"><img src="${batPNG}" class="buy" /></div>
+      </div>
     </div>
   </div>
   `;
@@ -86,6 +97,7 @@ document.body.innerHTML = `
 // Add click handler
 const clickMeButton = document.getElementById("increment")!;
 const autoInfoButton = document.getElementById("autoClickerInfo")!;
+const handsInfoButton = document.getElementById("extraHandsInfo")!;
 const autoClickButton = document.getElementById("purchase")!;
 const counterElement = document.getElementById("counter")!;
 const batElement = document.getElementById("batCounter")!;
@@ -95,8 +107,10 @@ clickMeButton.addEventListener("click", () => {
   counter++;
   counterElement.textContent = counter.toString();
   if (counter >= 10) {
-    autoInfoButton.style.height = "30vh";
-    autoInfoButton.classList.add("half");
+    autoInfoButton.style.display = "block";
+  }
+  if (counter >= 100) {
+    handsInfoButton.style.display = "block";
   }
 });
 
@@ -124,6 +138,9 @@ function autoClicker() {
     counter += growthRate;
     counterElement.textContent = counter.toString();
     t0 = t1;
+  }
+  if (counter >= 100) {
+    handsInfoButton.style.display = "block";
   }
   requestAnimationFrame(autoClicker);
 }
