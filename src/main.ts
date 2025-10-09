@@ -39,6 +39,9 @@ document.head.innerHTML = `
       transform: scale(0.9);
       cursor: pointer;
     }
+    #autoInfoButton {
+      height: 0vh;
+    }
     .buy {
       width: 100px;
       height: 100px;
@@ -51,9 +54,18 @@ document.head.innerHTML = `
       transform: scale(0.9);
       cursor: pointer;
     }
-      .flex {
-        display: flex
-      }
+    .flex {
+      display: flex
+    }
+    .sparkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: red;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: sparkle-animation 2s ease-in-out infinite;
+    pointer-events: none;
+    }
   </style>
 `;
 
@@ -65,14 +77,15 @@ document.body.innerHTML = `
   <div class = "flex">
     <div class = "half">
       <p>Drops of Blood: <span id="counter">${counter}</span></p>
+      <div class="sparkle"></div>
       <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
       <p>🦇: <span id="batCounter">${numberOfBats}</span></p>
     </div>
-    <div id="autoClickerInfo" class = "half">
-      <p>You can buy Vampire Bat to help!!!</p>
-      <p>Just click below when you have <span id="price">${
-    10 * growthRate + 10
-  }</span> drops of blood!</p>
+    <div id="autoClickerInfo">
+      <p>You can buy Vampire Bat to help!!!</br>
+      Just click below when you have <span id="price">${
+  10 * growthRate + 10
+}</span> drops of blood!</p>
       <div id="purchase"><img src="${batPNG}" class="buy" /></div>
     </div>
   </div>
@@ -80,6 +93,7 @@ document.body.innerHTML = `
 
 // Add click handler
 const clickMeButton = document.getElementById("increment")!;
+const autoInfoButton = document.getElementById("autoClickerInfo")!;
 const autoClickButton = document.getElementById("purchase")!;
 const counterElement = document.getElementById("counter")!;
 const batElement = document.getElementById("batCounter")!;
@@ -88,6 +102,10 @@ const priceElement = document.getElementById("price")!;
 clickMeButton.addEventListener("click", () => {
   counter++;
   counterElement.textContent = counter.toString();
+  if (counter >= 10) {
+    autoInfoButton.style.height = "30vh";
+    autoInfoButton.classList.add("half");
+  }
 });
 
 let clickerPrice = 10 * growthRate + 10;
