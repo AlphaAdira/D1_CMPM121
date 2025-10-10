@@ -4,8 +4,8 @@ import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 let counter = 0;
 let batGrowthRate = 0;
 let numberOfBats: number = 0;
-//let friendGrowthRate = 0;
-//let numberOfFriends: number = 0; 🧛
+let friendGrowthRate = 0;
+let numberOfFriends: number = 0;
 
 document.head.innerHTML = `
   <title>Adira's D1 Project</title>
@@ -21,10 +21,7 @@ document.head.innerHTML = `
     p {
       font-size: 1.2rem;
     }
-    #increment {
-      background: none;
-      border: none;
-    }
+/* div sizes */
     #top {
       width: 100vw;
       height: 25vh;
@@ -38,6 +35,12 @@ document.head.innerHTML = `
     .smallerQuarter {
       width: 16vw;
     }
+
+/* icon player clicks on */
+    #increment {
+      background: none;
+      border: none;
+    }
     .icon {
       width: 250px;
       height: 250px;
@@ -49,6 +52,11 @@ document.head.innerHTML = `
     .icon:active {
       transform: scale(0.9);
       cursor: pointer;
+    }
+
+/* shop items (display) */
+    .flex {
+      display: flex
     }
     #autoClickerInfo {
       display: none;
@@ -68,9 +76,6 @@ document.head.innerHTML = `
       transform: scale(0.9);
       cursor: pointer;
     }
-    .flex {
-      display: flex
-    }
   </style>
 `;
 
@@ -83,7 +88,8 @@ document.body.innerHTML = `
     <div class = "half">
       <p>Drops of Blood: <span id="counter">${counter}</span></p>
       <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
-      <p>🦇: <span id="batCounter">${numberOfBats}</span></p>
+      <p>🦇: <span id="batCounter">${numberOfBats}</span>
+       🧛: <span id="friendCounter">${numberOfFriends}</span></p>
     </div>
     <div id = "shopArea" class = "half">
       <div id="autoClickerInfo">
@@ -91,13 +97,13 @@ document.body.innerHTML = `
         Each bat gives you +1 drop of blood per second!</br>
         Click this bat when you have <span id="batPrice">
         10</span> drops of blood!</p></div>
-        <div id="purchase" class = "smallerQuarter"><img src="${batPNG}" class="buy" /></div>
+        <div id="purchaseBat" class = "smallerQuarter"><img src="${batPNG}" class="buy" /></div>
       </div>
       <div id="extraHandsInfo">
         <div class = "biggerQuarter"><p>Why don't we invite some friends to help</br>
         Click this bat when you have <span id="friendPrice">
         100</span> drops of blood!</p></div>
-        <div id="purchase" class = "smallerQuarter"><img src="${batPNG}" class="buy" /></div>
+        <div id="purchaseFriend" class = "smallerQuarter"><img src="${batPNG}" class="buy" /></div>
       </div>
     </div>
   </div>
@@ -111,13 +117,13 @@ const handsInfoButton = document.getElementById("extraHandsInfo")!; // friends s
 
 const counterElement = document.getElementById("counter")!; // total drops of blood
 
-const autoBatButton = document.getElementById("purchase")!; // buy button (needs to be changed for each item)
+const autoBatButton = document.getElementById("purchaseBat")!; // buy button (needs to be changed for each item)
 const batElement = document.getElementById("batCounter")!; // numberOfBats
 const batPriceElement = document.getElementById("batPrice")!; // starts at 10
 
-//const autoFriendButton = document.getElementById("purchase")!; // buy button (needs to be changed for each item)
-//const friendElement = document.getElementById("friendCounter")!; // numberOfFriends
-//const friendPriceElement = document.getElementById("friendPrice")!; // starts at 100
+const autoFriendButton = document.getElementById("purchaseFriend")!; // buy button (needs to be changed for each item)
+const friendElement = document.getElementById("friendCounter")!; // numberOfFriends
+const friendPriceElement = document.getElementById("friendPrice")!; // starts at 100
 
 //unlock the shop items
 clickMeButton.addEventListener("click", () => {
@@ -131,22 +137,37 @@ clickMeButton.addEventListener("click", () => {
   }
 });
 
-//where to buy the auto clicker aka vampire bats
-let clickerPrice = 10 * batGrowthRate + 10;
+//where to buy the vampire bats
+let batClickerPrice = 10;
 autoBatButton.addEventListener("click", () => {
-  if (counter >= Math.floor(clickerPrice)) {
-    counter -= Math.floor(clickerPrice);
+  if (counter >= Math.floor(batClickerPrice)) {
+    counter -= Math.floor(batClickerPrice);
     batGrowthRate++;
     numberOfBats += 1;
     batElement.textContent = numberOfBats.toString();
-    clickerPrice += 1.15 * (10 * batGrowthRate);
-    console.log(clickerPrice);
+    batClickerPrice += 1.15 * (10 * batGrowthRate);
+    console.log(batClickerPrice);
     counterElement.textContent = counter.toString();
-    batPriceElement.textContent = (Math.floor(clickerPrice)).toString();
+    batPriceElement.textContent = (Math.floor(batClickerPrice)).toString();
   }
 });
 
-//auto clicker aka vampire bats
+//where to buy the vampire friends
+let friendClickerPrice = 100;
+autoFriendButton.addEventListener("click", () => {
+  if (counter >= Math.floor(friendClickerPrice)) {
+    counter -= Math.floor(friendClickerPrice);
+    friendGrowthRate++;
+    numberOfFriends += 1;
+    friendElement.textContent = numberOfFriends.toString();
+    friendClickerPrice += 1.15 * (50 * friendGrowthRate);
+    console.log(friendClickerPrice);
+    counterElement.textContent = counter.toString();
+    friendPriceElement.textContent = (Math.floor(friendClickerPrice)).toString();
+  }
+});
+
+//auto clicker
 let t0: number = performance.now();
 console.log(t0);
 let t1: number = -1;
@@ -154,6 +175,7 @@ function autoClicker() {
   t1 = performance.now();
   if (t1 - t0 >= 1000) {
     counter += batGrowthRate;
+    counter += friendGrowthRate*10;
     counterElement.textContent = counter.toString();
     t0 = t1;
   }
