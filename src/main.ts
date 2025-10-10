@@ -24,7 +24,7 @@ document.head.innerHTML = `
 /* div sizes */
     #top {
       width: 100vw;
-      height: 25vh;
+      height: 20vh;
     }
     .half {
       width: 50vw;
@@ -42,8 +42,8 @@ document.head.innerHTML = `
       border: none;
     }
     .icon {
-      width: 250px;
-      height: 250px;
+      width: 300px;
+      height: 300px;
     }
     .icon:hover {
       transform: scale(1.1);
