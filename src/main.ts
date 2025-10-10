@@ -101,7 +101,7 @@ document.body.innerHTML = `
   </div>
   `;
 
-// Add click handler
+// Add shop clicking handlers
 const clickMeButton = document.getElementById("increment")!;
 const autoInfoButton = document.getElementById("autoClickerInfo")!;
 const handsInfoButton = document.getElementById("extraHandsInfo")!;
@@ -110,6 +110,7 @@ const counterElement = document.getElementById("counter")!;
 const batElement = document.getElementById("batCounter")!;
 const batPriceElement = document.getElementById("batPrice")!;
 
+//unlock the shop items
 clickMeButton.addEventListener("click", () => {
   counter++;
   counterElement.textContent = counter.toString();
@@ -121,8 +122,8 @@ clickMeButton.addEventListener("click", () => {
   }
 });
 
+//where to buy the auto clicker aka vampire bats
 let clickerPrice = 10 * growthRate + 10;
-
 autoClickButton.addEventListener("click", () => {
   if (counter >= Math.floor(clickerPrice)) {
     counter -= Math.floor(clickerPrice);
@@ -136,6 +137,7 @@ autoClickButton.addEventListener("click", () => {
   }
 });
 
+//auto clicker aka vampire bats
 let t0: number = performance.now();
 console.log(t0);
 let t1: number = -1;
