@@ -101,6 +101,7 @@ document.body.innerHTML = `
       </div>
       <div id="extraHandsInfo">
         <div class = "biggerQuarter"><p>Why don't we invite some friends to help</br>
+        Each friend gives you +10 drop of blood per second!</br>
         Click this bat when you have <span id="friendPrice">
         100</span> drops of blood!</p></div>
         <div id="purchaseFriend" class = "smallerQuarter"><img src="${batPNG}" class="buy" /></div>
