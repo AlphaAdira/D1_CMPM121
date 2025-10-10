@@ -160,7 +160,7 @@ autoFriendButton.addEventListener("click", () => {
     friendGrowthRate++;
     numberOfFriends += 1;
     friendElement.textContent = numberOfFriends.toString();
-    friendClickerPrice += 1.15 * (50 * friendGrowthRate);
+    friendClickerPrice += 1.15 * (100 * friendGrowthRate);
     console.log(friendClickerPrice);
     counterElement.textContent = counter.toString();
     friendPriceElement.textContent = (Math.floor(friendClickerPrice)).toString();
