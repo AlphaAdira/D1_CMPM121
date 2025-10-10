@@ -2,8 +2,10 @@ import batPNG from "./bat.png";
 import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 
 let counter = 0;
-let growthRate = 0;
+let batGrowthRate = 0;
 let numberOfBats: number = 0;
+//let friendGrowthRate = 0;
+//let numberOfFriends: number = 0;
 
 document.head.innerHTML = `
   <title>Adira's D1 Project</title>
@@ -89,13 +91,13 @@ document.body.innerHTML = `
         <div class = "biggerQuarter"><p>You can buy Vampire Bat to help!!!</br>
         Each bat gives you +1 drop of blood per second!</br>
         Click this bat when you have <span id="batPrice">
-        ${10 * growthRate + 10}</span> drops of blood!</p></div>
+        ${10 * batGrowthRate + 10}</span> drops of blood!</p></div>
         <div id="purchase" class = "smallerQuarter"><img src="${batPNG}" class="buy" /></div>
       </div>
       <div id="extraHandsInfo">
         <div class = "biggerQuarter"><p>Why don't we invite some friends to help</br>
         Click this bat when you have <span id="friendPrice">
-        ${20 * growthRate + 100}</span> drops of blood!</p></div>
+        ${20 * batGrowthRate + 100}</span> drops of blood!</p></div>
         <div id="purchase" class = "smallerQuarter"><img src="${batPNG}" class="buy" /></div>
       </div>
     </div>
@@ -106,10 +108,10 @@ document.body.innerHTML = `
 const clickMeButton = document.getElementById("increment")!;
 const autoInfoButton = document.getElementById("autoClickerInfo")!;
 const handsInfoButton = document.getElementById("extraHandsInfo")!;
-const autoClickButton = document.getElementById("purchase")!;
+const autoClickButton = document.getElementById("purchase")!; //buy button
 const counterElement = document.getElementById("counter")!;
-const batElement = document.getElementById("batCounter")!;
-const batPriceElement = document.getElementById("batPrice")!;
+const batElement = document.getElementById("batCounter")!; // numberOfBats
+const batPriceElement = document.getElementById("batPrice")!; // starts at 10
 
 //unlock the shop items
 clickMeButton.addEventListener("click", () => {
@@ -124,14 +126,14 @@ clickMeButton.addEventListener("click", () => {
 });
 
 //where to buy the auto clicker aka vampire bats
-let clickerPrice = 10 * growthRate + 10;
+let clickerPrice = 10 * batGrowthRate + 10;
 autoClickButton.addEventListener("click", () => {
   if (counter >= Math.floor(clickerPrice)) {
     counter -= Math.floor(clickerPrice);
-    growthRate++;
+    batGrowthRate++;
     numberOfBats += 1;
     batElement.textContent = numberOfBats.toString();
-    clickerPrice += 1.15 * (10 * growthRate);
+    clickerPrice += 1.15 * (10 * batGrowthRate);
     console.log(clickerPrice);
     counterElement.textContent = counter.toString();
     batPriceElement.textContent = (Math.floor(clickerPrice)).toString();
@@ -145,7 +147,7 @@ let t1: number = -1;
 function autoClicker() {
   t1 = performance.now();
   if (t1 - t0 >= 1000) {
-    counter += growthRate;
+    counter += batGrowthRate;
     counterElement.textContent = counter.toString();
     t0 = t1;
   }
