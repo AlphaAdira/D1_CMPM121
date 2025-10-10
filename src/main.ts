@@ -1,7 +1,7 @@
 import batPNG from "./bat.png";
 import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 
-let counter = 0;
+let counter = 9;
 let growthRate = 0;
 let numberOfBats: number = 0;
 
@@ -16,6 +16,9 @@ document.head.innerHTML = `
       background: #737373ff;
       overflow: hidden;
     }
+    p {
+      font-size: 1.2rem;
+    }
     #increment {
       background: none;
       border: none;
@@ -27,12 +30,15 @@ document.head.innerHTML = `
     .half {
       width: 50vw;
     }
-    .quarter {
-      width: 25vw;
+    .biggerQuarter {
+      width: 33vw;
+    }
+    .smallerQuarter {
+      width: 16vw;
     }
     .icon {
-      width: 200px;
-      height: 200px;
+      width: 250px;
+      height: 250px;
     }
     .icon:hover {
       transform: scale(1.1);
@@ -79,17 +85,17 @@ document.body.innerHTML = `
       <p>🦇: <span id="batCounter">${numberOfBats}</span></p>
     </div>
     <div id = "shopArea" class = "half">
-      <div id="autoClickerInfo" class = "flex">
-        <div class = "quarter"><p>You can buy Vampire Bat to help!!!</br>
-        Click this bat when you have </br><span id="price">
+      <div id="autoClickerInfo">
+        <div class = "biggerQuarter"><p>You can buy Vampire Bat to help!!!</br>
+        Click this bat when you have <span id="batPrice">
         ${10 * growthRate + 10}</span> drops of blood!</p></div>
-        <div id="purchase" class = "quarter"><img src="${batPNG}" class="buy" /></div>
+        <div id="purchase" class = "smallerQuarter"><img src="${batPNG}" class="buy" /></div>
       </div>
-      <div id="extraHandsInfo" class = "flex">
-        <p class = "quarter">Why don't we invite some friends to help</br>
-        Click below when you have </br><span id="price">
-        ${20 * growthRate + 100}</span> drops of blood!</p>
-        <div id="purchase" class = "quarter"><img src="${batPNG}" class="buy" /></div>
+      <div id="extraHandsInfo">
+        <div class = "biggerQuarter"><p>Why don't we invite some friends to help</br>
+        Click this bat when you have <span id="friendPrice">
+        ${20 * growthRate + 100}</span> drops of blood!</p></div>
+        <div id="purchase" class = "smallerQuarter"><img src="${batPNG}" class="buy" /></div>
       </div>
     </div>
   </div>
@@ -102,16 +108,16 @@ const handsInfoButton = document.getElementById("extraHandsInfo")!;
 const autoClickButton = document.getElementById("purchase")!;
 const counterElement = document.getElementById("counter")!;
 const batElement = document.getElementById("batCounter")!;
-const priceElement = document.getElementById("price")!;
+const batPriceElement = document.getElementById("batPrice")!;
 
 clickMeButton.addEventListener("click", () => {
   counter++;
   counterElement.textContent = counter.toString();
   if (counter >= 10) {
-    autoInfoButton.style.display = "block";
+    autoInfoButton.style.display = "flex";
   }
   if (counter >= 100) {
-    handsInfoButton.style.display = "block";
+    handsInfoButton.style.display = "flex";
   }
 });
 
@@ -126,7 +132,7 @@ autoClickButton.addEventListener("click", () => {
     clickerPrice += 1.15 * (10 * growthRate);
     console.log(clickerPrice);
     counterElement.textContent = counter.toString();
-    priceElement.textContent = (Math.floor(clickerPrice)).toString();
+    batPriceElement.textContent = (Math.floor(clickerPrice)).toString();
   }
 });
 
@@ -141,7 +147,7 @@ function autoClicker() {
     t0 = t1;
   }
   if (counter >= 100) {
-    handsInfoButton.style.display = "block";
+    handsInfoButton.style.display = "flex";
   }
   requestAnimationFrame(autoClicker);
 }
