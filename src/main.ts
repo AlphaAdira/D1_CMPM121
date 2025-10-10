@@ -163,7 +163,8 @@ autoFriendButton.addEventListener("click", () => {
     friendClickerPrice += 1.15 * (100 * friendGrowthRate);
     console.log(friendClickerPrice);
     counterElement.textContent = counter.toString();
-    friendPriceElement.textContent = (Math.floor(friendClickerPrice)).toString();
+    friendPriceElement.textContent = (Math.floor(friendClickerPrice))
+      .toString();
   }
 });
 
@@ -175,7 +176,7 @@ function autoClicker() {
   t1 = performance.now();
   if (t1 - t0 >= 1000) {
     counter += batGrowthRate;
-    counter += friendGrowthRate*10;
+    counter += friendGrowthRate * 10;
     counterElement.textContent = counter.toString();
     t0 = t1;
   }
