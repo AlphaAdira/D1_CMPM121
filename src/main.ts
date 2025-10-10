@@ -1,7 +1,7 @@
 import batPNG from "./bat.png";
 import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 
-let counter = 9;
+let counter = 0;
 let growthRate = 0;
 let numberOfBats: number = 0;
 
