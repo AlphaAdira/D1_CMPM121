@@ -1,3 +1,20 @@
-# CMPM 121 D1 Project
+# Adira's CMPM 121 D1 Project
 
-This is the starting point for your CMPM 121 D1 project. The goal of this project is to create a simple web application using TypeScript, Vite, and modern web development practices. Students should make sure to remove _this_ content from their README.md file and replace it with their own project documentation.
+For this project, I created a incremental game using TypeScript, Vite, and modern web development practices.
+
+# Things to add:
+add a changing image to the page
+
+1 click (started the game! [fangs] - nothing happens)
+
+100 clicks (level up once [red eyes] - user clicks increase)
+
+1000 clicks (level up again [white hair] - user clicks increase)
+
+5000 clicks (level up again [new clothes] - user clicks increase)
+
+new shops to create
+
+250 - deconsecrate surrounding lands (adds 100/s)
+
+1000 -  shop item 4 (adds 250/s)
