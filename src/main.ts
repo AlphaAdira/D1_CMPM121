@@ -87,6 +87,7 @@ document.body.innerHTML = `
     <div id = "shopArea" class = "half">
       <div id="autoClickerInfo">
         <div class = "biggerQuarter"><p>You can buy Vampire Bat to help!!!</br>
+        Each bat gives you +1 drop of blood per second!</br>
         Click this bat when you have <span id="batPrice">
         ${10 * growthRate + 10}</span> drops of blood!</p></div>
         <div id="purchase" class = "smallerQuarter"><img src="${batPNG}" class="buy" /></div>
