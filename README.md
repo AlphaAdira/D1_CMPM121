@@ -17,4 +17,6 @@ new shops to create
 
 250 - deconsecrate surrounding lands (adds 100/s)
 
-1000 -  shop item 4 (adds 250/s)
+1000 -  create an animal farm (adds 250/s)
+
+2500 - human sacrifices (adds 500/s)
