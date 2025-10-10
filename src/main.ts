@@ -82,7 +82,6 @@ document.body.innerHTML = `
   <div class = "flex">
     <div class = "half">
       <p>Drops of Blood: <span id="counter">${counter}</span></p>
-      <div class="sparkle"></div>
       <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
       <p>🦇: <span id="batCounter">${numberOfBats}</span></p>
     </div>
