@@ -93,17 +93,15 @@ document.body.innerHTML = `
     </div>
     <div id = "shopArea" class = "half">
       <div id="autoClickerInfo">
-        <div class = "biggerQuarter"><p>You can buy Vampire Bat to help!!!</br>
-        Each bat gives you +1 drop of blood per second!</br>
-        Click this bat when you have <span id="batPrice">
-        10</span> drops of blood!</p></div>
+        <div class = "biggerQuarter"><p>You can buy Vampire Bat for
+        <span id="batPrice">10</span> drops of blood!</br>
+        Each bat gives you +1 drop of blood per second!</p></div>
         <div id="purchaseBat" class = "smallerQuarter"><img src="${batPNG}" class="buy" /></div>
       </div>
       <div id="extraHandsInfo">
-        <div class = "biggerQuarter"><p>Why don't we invite some friends to help</br>
-        Each friend gives you +10 drop of blood per second!</br>
-        Click this bat when you have <span id="friendPrice">
-        100</span> drops of blood!</p></div>
+        <div class = "biggerQuarter"><p>Invite a Vampire Friend for
+        <span id="friendPrice">100</span> drops of blood!</br>
+        Each friend gives you +10 drop of blood per second!</p></div>
         <div id="purchaseFriend" class = "smallerQuarter"><img src="${batPNG}" class="buy" /></div>
       </div>
     </div>
