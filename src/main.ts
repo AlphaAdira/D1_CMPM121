@@ -2,6 +2,7 @@ import batPNG from "./bat.png";
 import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 
 let counter = 0;
+let cps = 0;
 let batGrowthRate = 0;
 let numberOfBats: number = 0;
 let friendGrowthRate = 0;
@@ -102,7 +103,8 @@ document.body.innerHTML = `
   </div>
   <div class = "flex">
     <div class = "half">
-      <p>Drops of Blood: <span id="counter">${counter}</span></br>...</p>
+      <p>Drops of Blood: <span id="counter">${counter}</span></br> 
+      Drops per Second: <span id="cps">${cps}</span></br>...</p>
       <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
     </div>
     <div id = "shopArea" class = "half">
@@ -129,6 +131,7 @@ const handsInfoButton = document.getElementById("extraHandsInfo")!; // friends s
 //const landInfoButton = document.getElementById(DesecrationInfo)!; // land shop section
 
 const counterElement = document.getElementById("counter")!; // total drops of blood
+const cpsElement = document.getElementById("cps")!; // drops of blood per second
 
 const autoBatButton = document.getElementById("purchaseBat")!; // buy button (needs to be changed for each item)
 const batElement = document.getElementById("batCounter")!; // numberOfBats
@@ -157,6 +160,8 @@ autoBatButton.addEventListener("click", () => {
     counter -= Math.floor(batClickerPrice);
     batGrowthRate++;
     numberOfBats += 1;
+    cps += 1;
+    cpsElement.textContent = cps.toString();
     batElement.textContent = numberOfBats.toString();
     batClickerPrice += 1.15 * (10 * batGrowthRate);
     console.log(batClickerPrice);
@@ -172,6 +177,8 @@ autoFriendButton.addEventListener("click", () => {
     counter -= Math.floor(friendClickerPrice);
     friendGrowthRate++;
     numberOfFriends += 1;
+    cps += 10;
+    cpsElement.textContent = cps.toString();
     friendElement.textContent = numberOfFriends.toString();
     friendClickerPrice += 1.15 * (100 * friendGrowthRate);
     console.log(friendClickerPrice);
