@@ -2,17 +2,17 @@
 
 For this project, I created a incremental game using TypeScript, Vite, and modern web development practices.
 
-# Things to add:
+# Things to add
 
 add a changing image to the page
 
-1 click (started the game! [fangs] - nothing happens)
+1 cps (started the game! [fangs] - nothing happens)
 
-100 clicks (level up once [red eyes] - user clicks increase)
+100 cps (level up once [red eyes] - user clicks increase)
 
-1000 clicks (level up again [white hair] - user clicks increase)
+500 cps (level up again [white hair] - user clicks increase)
 
-5000 clicks (level up again [new clothes] - user clicks increase)
+5000 cps (level up again [new clothes] - user clicks increase)
 
 new shops to create
 
