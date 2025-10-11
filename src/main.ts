@@ -145,6 +145,7 @@ const friendPriceElement = document.getElementById("friendPrice")!; // starts at
 clickMeButton.addEventListener("click", () => {
   counter++;
   counterElement.textContent = counter.toString();
+  //shops
   if (counter >= 10) {
     autoInfoButton.style.display = "flex";
   }
