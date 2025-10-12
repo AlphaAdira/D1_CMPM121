@@ -7,6 +7,8 @@ let batGrowthRate = 0;
 let numberOfBats: number = 0;
 let friendGrowthRate = 0;
 let numberOfFriends: number = 0;
+let landGrowthRate = 0;
+let numberOfLand: number = 0;
 
 document.head.innerHTML = `
   <title>Adira's D1 Project</title>
@@ -72,6 +74,9 @@ document.head.innerHTML = `
     #extraHandsInfo {
       display: none;
     }
+    #DesecrationInfo {
+      display: none;
+    }
     .buy {
       width: 100px;
       height: 100px;
@@ -98,7 +103,8 @@ document.body.innerHTML = `
     </div>
     <div class = "smallerQuarter">
       <p>🦇: <span id="batCounter">${numberOfBats}</span>
-       🧛: <span id="friendCounter">${numberOfFriends}</span></p>
+       🧛: <span id="friendCounter">${numberOfFriends}</span>
+       🏰: <span id="friendCounter">${numberOfLand}</span></p>
     </div>
   </div>
   <div class = "flex">
@@ -120,6 +126,12 @@ document.body.innerHTML = `
         Each friend gives you +10 drop of blood per second!</p></div>
         <div id="purchaseFriend" class = "smallerQuarter"><img src="${exampleIconUrl}" class="buy" /></div>
       </div>
+      <div id="DesecrationInfo">
+        <div class = "biggerQuarter"><p>Desecrate sacred land for 
+        <strong><span id="landPrice">250</span></strong> drops of blood!</br>
+        Each piece on land gives you +100 drop of blood per second!</p></div>
+        <div id="purchaseLand" class = "smallerQuarter"><img src="${exampleIconUrl}" class="buy" /></div>
+      </div>
     </div>
   </div>
   `;
@@ -128,7 +140,7 @@ document.body.innerHTML = `
 const clickMeButton = document.getElementById("increment")!; // main vampire icon (the one the user clicks on)
 const autoInfoButton = document.getElementById("autoClickerInfo")!; // vampire bat section
 const handsInfoButton = document.getElementById("extraHandsInfo")!; // friends shop section
-//const landInfoButton = document.getElementById(DesecrationInfo)!; // land shop section
+const landInfoButton = document.getElementById("DesecrationInfo")!; // land shop section
 
 const counterElement = document.getElementById("counter")!; // total drops of blood
 const cpsElement = document.getElementById("cps")!; // drops of blood per second
@@ -151,6 +163,9 @@ clickMeButton.addEventListener("click", () => {
   }
   if (counter >= 100) {
     handsInfoButton.style.display = "flex";
+  }
+  if (counter >= 250) {
+    landInfoButton.style.display = "flex";
   }
 });
 
