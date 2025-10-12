@@ -104,7 +104,7 @@ document.body.innerHTML = `
     <div class = "smallerQuarter">
       <p>🦇: <span id="batCounter">${numberOfBats}</span>
        🧛: <span id="friendCounter">${numberOfFriends}</span>
-       🏰: <span id="friendCounter">${numberOfLand}</span></p>
+       🏰: <span id="landCounter">${numberOfLand}</span></p>
     </div>
   </div>
   <div class = "flex">
@@ -152,6 +152,10 @@ const batPriceElement = document.getElementById("batPrice")!; // starts at 10
 const autoFriendButton = document.getElementById("purchaseFriend")!; // buy button (needs to be changed for each item)
 const friendElement = document.getElementById("friendCounter")!; // numberOfFriends
 const friendPriceElement = document.getElementById("friendPrice")!; // starts at 100
+
+const autoLandButton = document.getElementById("purchaseLand")!; // buy button (needs to be changed for each item)
+const landElement = document.getElementById("landCounter")!; // numberOfFriends
+const landPriceElement = document.getElementById("landPrice")!; // starts at 250
 
 //unlock the shop items
 clickMeButton.addEventListener("click", () => {
@@ -204,6 +208,24 @@ autoFriendButton.addEventListener("click", () => {
   }
 });
 
+//where to buy the vampire friends
+let landClickerPrice = 100;
+autoLandButton.addEventListener("click", () => {
+  if (counter >= Math.floor(landClickerPrice)) {
+    counter -= Math.floor(landClickerPrice);
+    landGrowthRate++;
+    numberOfLand += 1;
+    cps += 100;
+    cpsElement.textContent = cps.toString();
+    landElement.textContent = numberOfLand.toString();
+    landClickerPrice += 1.15 * (250 * landGrowthRate);
+    console.log(landClickerPrice);
+    counterElement.textContent = counter.toString();
+    landPriceElement.textContent = (Math.floor(landClickerPrice))
+      .toString();
+  }
+});
+
 //auto clicker
 let t0: number = performance.now();
 console.log(t0);
@@ -213,6 +235,7 @@ function autoClicker() {
   if (t1 - t0 >= 1000) {
     counter += batGrowthRate;
     counter += friendGrowthRate * 10;
+    counter += landGrowthRate * 100;
     counterElement.textContent = counter.toString();
     t0 = t1;
   }
