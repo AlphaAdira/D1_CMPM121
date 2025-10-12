@@ -1,6 +1,10 @@
+//import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 import batPNG from "./bat.png";
 import friendPNG from "./friends.png";
 //credits to https://www.instagram.com/neccodealer
+import landPNG from "./land.png";
+import bloodPNG from "./blood.webp";
+import iconPNG from "./vampire_au.png";
 
 let counter = 0;
 let cps = 0;
@@ -96,7 +100,7 @@ document.head.innerHTML = `
 document.body.innerHTML = `
   <div id = "top" class = "flex">
     <div class = "smallerQuarter">
-    <img src="${exampleIconUrl}" id = "itsME"/>
+    <img src="${iconPNG}" id = "itsME"/>
     </div>
     <div class = "biggestQuarter">
       <h1>Blood Drive</h1>
@@ -112,7 +116,7 @@ document.body.innerHTML = `
     <div class = "half">
       <p>Drops of Blood: <span id="counter">${counter}</span></br> 
       Drops per Second: <span id="cps">${cps}</span></br>...</p>
-      <div id="increment"><img src="${exampleIconUrl}" class="icon" /></div>
+      <div id="increment"><img src="${bloodPNG}" class="icon" /></div>
     </div>
     <div id = "shopArea" class = "half">
       <div id="autoClickerInfo">
@@ -131,7 +135,7 @@ document.body.innerHTML = `
         <div class = "biggerQuarter"><p>Desecrate sacred land for 
         <strong><span id="landPrice">250</span></strong> drops of blood!</br>
         Each piece on land gives you +100 drop of blood per second!</p></div>
-        <div id="purchaseLand" class = "smallerQuarter"><img src="${exampleIconUrl}" class="buy" /></div>
+        <div id="purchaseLand" class = "smallerQuarter"><img src="${landPNG}" class="buy" /></div>
       </div>
     </div>
   </div>
