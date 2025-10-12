@@ -1,8 +1,12 @@
 //import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 import batPNG from "./bat.png";
 import friendPNG from "./friends.png";
-//credits to https://www.instagram.com/neccodealer
+//art credits to https://www.instagram.com/neccodealer
 import landPNG from "./land.png";
+//build made by a friend of mine (i don't have a social for them)
+//import farmPNG from "./farm.png";
+//import scissorPNG from "./scissors.png";
+//credit a friend of mine. The scissors belong to them
 import bloodPNG from "./blood.webp";
 import iconPNG from "./vampire_au.png";
 
@@ -30,7 +34,7 @@ document.head.innerHTML = `
       font-size: 1.2rem;
     }
     #itsME {
-      width: 100px;
+      width: 120px;
       height: 100px;
     }
 /* div sizes */
