@@ -1,4 +1,3 @@
-//import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 import batPNG from "./bat.png";
 import friendPNG from "./friends.png";
 //art credits to https://www.instagram.com/neccodealer
