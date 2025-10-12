@@ -1,5 +1,4 @@
 import batPNG from "./bat.png";
-import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 import friendPNG from "./friends.png";
 //credits to https://www.instagram.com/neccodealer
 
