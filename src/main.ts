@@ -1,5 +1,7 @@
 import batPNG from "./bat.png";
 import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
+import friendPNG from "./friends.png";
+//credits to https://www.instagram.com/neccodealer
 
 let counter = 0;
 let cps = 0;
@@ -124,7 +126,7 @@ document.body.innerHTML = `
         <div class = "biggerQuarter"><p>Invite a Vampire Friend for
         <strong><span id="friendPrice">100</span></strong> drops of blood!</br>
         Each friend gives you +10 drop of blood per second!</p></div>
-        <div id="purchaseFriend" class = "smallerQuarter"><img src="${exampleIconUrl}" class="buy" /></div>
+        <div id="purchaseFriend" class = "smallerQuarter"><img src="${friendPNG}" class="buy" /></div>
       </div>
       <div id="DesecrationInfo">
         <div class = "biggerQuarter"><p>Desecrate sacred land for 
