@@ -217,7 +217,7 @@ autoFriendButton.addEventListener("click", () => {
 });
 
 //where to buy the vampire friends
-let landClickerPrice = 100;
+let landClickerPrice = 250;
 autoLandButton.addEventListener("click", () => {
   if (counter >= Math.floor(landClickerPrice)) {
     counter -= Math.floor(landClickerPrice);
