@@ -3,7 +3,7 @@ import friendPNG from "./friends.png";
 //art credits to https://www.instagram.com/neccodealer
 import landPNG from "./land.png";
 //build made by a friend of mine (i don't have a social for them)
-//import farmPNG from "./farm.png";
+import farmPNG from "./farm.png";
 //import scissorPNG from "./scissors.png";
 //credit a friend of mine. The scissors belong to them
 import bloodPNG from "./blood.webp";
@@ -19,7 +19,7 @@ document.head.innerHTML = `
       font-family: system-ui, sans-serif;
       color: #6b0004ff;
       text-align: center;
-      margin-top: 5rem;
+      margin-top: 2rem;
       background: #737373ff;
       overflow: hidden;
     }
@@ -79,6 +79,9 @@ document.head.innerHTML = `
     #DesecrationInfo {
       display: none;
     }
+    #FarmInfo {
+      display: none;
+    }
     .buy {
       width: 100px;
       height: 100px;
@@ -107,6 +110,7 @@ document.body.innerHTML = `
       <p>🦇: <span id="batCounter">0</span>
        🧛: <span id="friendCounter">0</span>
        🏰: <span id="landCounter">0</span></p>
+       🚜: <span id="farmCounter">0</span></p>
     </div>
   </div>
   <div class = "flex">
@@ -134,6 +138,12 @@ document.body.innerHTML = `
         Each piece on land gives you +100 drop of blood per second!</p></div>
         <div id="purchaseLand" class = "smallerQuarter"><img src="${landPNG}" class="buy" /></div>
       </div>
+      <div id="FarmInfo">
+        <div class = "biggerQuarter"><p>Farm for
+        <strong><span id="farmPrice">1000</span></strong> drops of blood!</br>
+        Each farm gives you +250 drops of blood per second!</p></div>
+        <div id="purchaseFarm" class = "smallerQuarter"><img src="${farmPNG}" class="buy" /></div>
+      </div>
     </div>
   </div>
   `;
@@ -146,6 +156,7 @@ const clickMeButton = document.getElementById("increment")!; // main vampire ico
 const autoInfoButton = document.getElementById("autoClickerInfo")!; // vampire bat section
 const handsInfoButton = document.getElementById("extraHandsInfo")!; // friends shop section
 const landInfoButton = document.getElementById("DesecrationInfo")!; // land shop section
+const farmInfoButton = document.getElementById("FarmInfo")!; // farm shop section
 
 interface ShopItem {
   basePrice: number;
@@ -203,6 +214,22 @@ const shopItems: Record<string, ShopItem> = {
     button: document.getElementById("purchaseLand")!,
     unlockThreshold: 250,
     displayInfo: landInfoButton,
+    currentPrice() {
+      return Math.floor(
+        this.basePrice * Math.pow(this.priceIncreaseFactor, this.count),
+      );
+    },
+  },
+  farm: {
+    basePrice: 1000,
+    growthRate: 250,
+    count: 0,
+    priceIncreaseFactor: 2.1,
+    element: document.getElementById("farmCounter")!,
+    priceElement: document.getElementById("farmPrice")!,
+    button: document.getElementById("purchaseFarm")!,
+    unlockThreshold: 1000,
+    displayInfo: farmInfoButton,
     currentPrice() {
       return Math.floor(
         this.basePrice * Math.pow(this.priceIncreaseFactor, this.count),
