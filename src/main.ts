@@ -4,7 +4,7 @@ import friendPNG from "./friends.png";
 import landPNG from "./land.png";
 //build made by a friend of mine (i don't have a social for them)
 import farmPNG from "./farm.png";
-//import scissorPNG from "./scissors.png";
+import scissorPNG from "./scissors.png";
 //credit a friend of mine. The scissors belong to them
 import bloodPNG from "./blood.webp";
 import iconPNG from "./vampire_au.png";
@@ -82,6 +82,9 @@ document.head.innerHTML = `
     #FarmInfo {
       display: none;
     }
+    #HumanInfo {
+      display: none;
+    }
     .buy {
       width: 100px;
       height: 100px;
@@ -108,9 +111,10 @@ document.body.innerHTML = `
     </div>
     <div class = "smallerQuarter">
       <p>🦇: <span id="batCounter">0</span>
-       🧛: <span id="friendCounter">0</span>
-       🏰: <span id="landCounter">0</span></p>
-       🚜: <span id="farmCounter">0</span></p>
+       🧛: <span id="friendCounter">0</span></br>
+       🏰: <span id="landCounter">0</span>
+       🚜: <span id="farmCounter">0</span></br>
+       ✂️: <span id="humanCounter">0</span></p>
     </div>
   </div>
   <div class = "flex">
@@ -139,10 +143,16 @@ document.body.innerHTML = `
         <div id="purchaseLand" class = "smallerQuarter"><img src="${landPNG}" class="buy" /></div>
       </div>
       <div id="FarmInfo">
-        <div class = "biggerQuarter"><p>Farm for
+        <div class = "biggerQuarter"><p>Catch and farm animals for
         <strong><span id="farmPrice">1000</span></strong> drops of blood!</br>
         Each farm gives you +250 drops of blood per second!</p></div>
         <div id="purchaseFarm" class = "smallerQuarter"><img src="${farmPNG}" class="buy" /></div>
+      </div>
+      <div id="HumanInfo">
+        <div class = "biggerQuarter"><p>Find humans to sacrifice for
+        <strong><span id="humanPrice">2500</span></strong> drops of blood!</br>
+        Each human gives you +500 drops of blood per second!</p></div>
+        <div id="purchaseHuman" class = "smallerQuarter"><img src="${scissorPNG}" class="buy" /></div>
       </div>
     </div>
   </div>
@@ -157,6 +167,7 @@ const autoInfoButton = document.getElementById("autoClickerInfo")!; // vampire b
 const handsInfoButton = document.getElementById("extraHandsInfo")!; // friends shop section
 const landInfoButton = document.getElementById("DesecrationInfo")!; // land shop section
 const farmInfoButton = document.getElementById("FarmInfo")!; // farm shop section
+const humanInfoButton = document.getElementById("HumanInfo")!; // human shop section
 
 interface ShopItem {
   basePrice: number;
@@ -236,6 +247,22 @@ const shopItems: Record<string, ShopItem> = {
       );
     },
   },
+  human: {
+    basePrice: 2500,
+    growthRate: 500,
+    count: 0,
+    priceIncreaseFactor: 2.1,
+    element: document.getElementById("humanCounter")!,
+    priceElement: document.getElementById("humanPrice")!,
+    button: document.getElementById("purchaseHuman")!,
+    unlockThreshold: 2500,
+    displayInfo: humanInfoButton,
+    currentPrice() {
+      return Math.floor(
+        this.basePrice * Math.pow(this.priceIncreaseFactor, this.count),
+      );
+    },
+  },
 };
 
 Object.entries(shopItems).forEach(([id, item]) => {
@@ -254,7 +281,11 @@ Object.entries(shopItems).forEach(([id, item]) => {
           ? "bat"
           : item === shopItems.friend
           ? "friend"
-          : "land"
+          : item === shopItems.land
+          ? "land"
+          : item === shopItems.farm
+          ? "farm"
+          : "human"
       ].currentPrice().toString();
     }
   });
@@ -283,6 +314,8 @@ function autoClicker() {
     counter += shopItems.bat.growthRate * shopItems.bat.count;
     counter += shopItems.friend.growthRate * shopItems.friend.count;
     counter += shopItems.land.growthRate * shopItems.land.count;
+    counter += shopItems.farm.growthRate * shopItems.farm.count;
+    counter += shopItems.human.growthRate * shopItems.human.count;
     counterElement.textContent = counter.toString();
     t0 = t1;
   }
