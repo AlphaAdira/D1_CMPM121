@@ -145,13 +145,13 @@ document.body.innerHTML = `
   `;
 
 // Add shop clicking handlers
+const counterElement = document.getElementById("counter")!; // total drops of blood
+const cpsElement = document.getElementById("cps")!; // drops of blood per second
+
 const clickMeButton = document.getElementById("increment")!; // main vampire icon (the one the user clicks on)
 const autoInfoButton = document.getElementById("autoClickerInfo")!; // vampire bat section
 const handsInfoButton = document.getElementById("extraHandsInfo")!; // friends shop section
 const landInfoButton = document.getElementById("DesecrationInfo")!; // land shop section
-
-const counterElement = document.getElementById("counter")!; // total drops of blood
-const cpsElement = document.getElementById("cps")!; // drops of blood per second
 
 const autoBatButton = document.getElementById("purchaseBat")!; // buy button (needs to be changed for each item)
 const batElement = document.getElementById("batCounter")!; // numberOfBats
