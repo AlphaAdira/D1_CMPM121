@@ -289,7 +289,7 @@ Object.entries(shopItems).forEach(([id, item]) => {
       counterElement.textContent = counter.toString();
       cpsElement.textContent = cps.toString();
       item.element.textContent = item.count.toString();
-      item.priceElement.textContent = shopItems[item === shopItems.bat ? "bat" : item === shopItems.friend ? "friend" : "land"].currentPrice().toString();
+      item.priceElement.textContent = item.currentPrice().toString();
     }
   });
 });
