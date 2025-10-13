@@ -245,8 +245,10 @@ const shopItems: Record<string, ShopItem> = {
     unlockThreshold: 10,
     displayInfo: autoInfoButton,
     currentPrice() {
-      return Math.floor(this.basePrice * Math.pow(this.priceIncreaseFactor, this.count));
-    }
+      return Math.floor(
+        this.basePrice * Math.pow(this.priceIncreaseFactor, this.count),
+      );
+    },
   },
   friend: {
     basePrice: 100,
@@ -259,8 +261,10 @@ const shopItems: Record<string, ShopItem> = {
     unlockThreshold: 100,
     displayInfo: handsInfoButton,
     currentPrice() {
-      return Math.floor(this.basePrice * Math.pow(this.priceIncreaseFactor, this.count));
-    }
+      return Math.floor(
+        this.basePrice * Math.pow(this.priceIncreaseFactor, this.count),
+      );
+    },
   },
   land: {
     basePrice: 250,
@@ -273,9 +277,11 @@ const shopItems: Record<string, ShopItem> = {
     unlockThreshold: 250,
     displayInfo: landInfoButton,
     currentPrice() {
-      return Math.floor(this.basePrice * Math.pow(this.priceIncreaseFactor, this.count));
-    }
-  }
+      return Math.floor(
+        this.basePrice * Math.pow(this.priceIncreaseFactor, this.count),
+      );
+    },
+  },
 };
 
 Object.entries(shopItems).forEach(([id, item]) => {
@@ -289,7 +295,13 @@ Object.entries(shopItems).forEach(([id, item]) => {
       counterElement.textContent = counter.toString();
       cpsElement.textContent = cps.toString();
       item.element.textContent = item.count.toString();
-      item.priceElement.textContent = item.currentPrice().toString();
+      item.priceElement.textContent = shopItems[
+        item === shopItems.bat
+          ? "bat"
+          : item === shopItems.friend
+          ? "friend"
+          : "land"
+      ].currentPrice().toString();
     }
   });
 });
@@ -300,7 +312,7 @@ clickMeButton.addEventListener("click", () => {
   counterElement.textContent = counter.toString();
 
   // Unlock on click (redundant but safe)
-  Object.values(shopItems).forEach(item => {
+  Object.values(shopItems).forEach((item) => {
     if (counter >= item.unlockThreshold) {
       item.displayInfo.style.display = "flex";
     }
@@ -322,7 +334,7 @@ function autoClicker() {
   }
 
   // Unlock shops based on counter
-  Object.values(shopItems).forEach(item => {
+  Object.values(shopItems).forEach((item) => {
     if (counter >= item.unlockThreshold) {
       item.displayInfo.style.display = "flex";
     }
