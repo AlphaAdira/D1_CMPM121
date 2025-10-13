@@ -238,7 +238,7 @@ const shopItems: Record<string, ShopItem> = {
     basePrice: 10,
     growthRate: 1,
     count: 0,
-    priceIncreaseFactor: 1.15,
+    priceIncreaseFactor: 2.1,
     element: document.getElementById("batCounter")!,
     priceElement: document.getElementById("batPrice")!,
     button: document.getElementById("purchaseBat")!,
@@ -252,7 +252,7 @@ const shopItems: Record<string, ShopItem> = {
     basePrice: 100,
     growthRate: 10,
     count: 0,
-    priceIncreaseFactor: 1.15,
+    priceIncreaseFactor: 2.1,
     element: document.getElementById("friendCounter")!,
     priceElement: document.getElementById("friendPrice")!,
     button: document.getElementById("purchaseFriend")!,
@@ -266,7 +266,7 @@ const shopItems: Record<string, ShopItem> = {
     basePrice: 250,
     growthRate: 100,
     count: 0,
-    priceIncreaseFactor: 1.15,
+    priceIncreaseFactor: 2.1,
     element: document.getElementById("landCounter")!,
     priceElement: document.getElementById("landPrice")!,
     button: document.getElementById("purchaseLand")!,
@@ -298,16 +298,13 @@ Object.entries(shopItems).forEach(([id, item]) => {
 clickMeButton.addEventListener("click", () => {
   counter++;
   counterElement.textContent = counter.toString();
-  //shops
-  if (counter >= 10) {
-    autoInfoButton.style.display = "flex";
-  }
-  if (counter >= 100) {
-    handsInfoButton.style.display = "flex";
-  }
-  if (counter >= 250) {
-    landInfoButton.style.display = "flex";
-  }
+
+  // Unlock on click (redundant but safe)
+  Object.values(shopItems).forEach(item => {
+    if (counter >= item.unlockThreshold) {
+      item.displayInfo.style.display = "flex";
+    }
+  });
 });
 
 //auto clicker
