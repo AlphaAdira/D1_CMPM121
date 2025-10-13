@@ -125,7 +125,7 @@ document.body.innerHTML = `
     </div>
     <div id = "shopArea" class = "half">
       <div id="autoClickerInfo">
-        <div class = "biggerQuarter"><p>You can buy Vampire Bat for
+        <div class = "biggerQuarter"><p>Spawn a Vampire Bat for
         <strong><span id="batPrice">10</span></strong> drops of blood!</br>
         Each bat gives you +1 drop of blood per second!</p></div>
         <div id="purchaseBat" class = "smallerQuarter"><img src="${batPNG}" class="buy" /></div>
@@ -149,7 +149,7 @@ document.body.innerHTML = `
         <div id="purchaseFarm" class = "smallerQuarter"><img src="${farmPNG}" class="buy" /></div>
       </div>
       <div id="HumanInfo">
-        <div class = "biggerQuarter"><p>Find humans to sacrifice for
+        <div class = "biggerQuarter"><p>Acquired human sacrifices for
         <strong><span id="humanPrice">2500</span></strong> drops of blood!</br>
         Each human gives you +500 drops of blood per second!</p></div>
         <div id="purchaseHuman" class = "smallerQuarter"><img src="${scissorPNG}" class="buy" /></div>
