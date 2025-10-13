@@ -11,12 +11,6 @@ import iconPNG from "./vampire_au.png";
 
 let counter = 0;
 let cps = 0;
-//let batGrowthRate = 0;
-//let numberOfBats: number = 0;
-//let friendGrowthRate = 0;
-//let numberOfFriends: number = 0;
-//let landGrowthRate = 0;
-//let numberOfLand: number = 0;
 
 document.head.innerHTML = `
   <title>Adira's D1 Project</title>
