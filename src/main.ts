@@ -11,12 +11,12 @@ import iconPNG from "./vampire_au.png";
 
 let counter = 0;
 let cps = 0;
-let batGrowthRate = 0;
-let numberOfBats: number = 0;
-let friendGrowthRate = 0;
-let numberOfFriends: number = 0;
-let landGrowthRate = 0;
-let numberOfLand: number = 0;
+//let batGrowthRate = 0;
+//let numberOfBats: number = 0;
+//let friendGrowthRate = 0;
+//let numberOfFriends: number = 0;
+//let landGrowthRate = 0;
+//let numberOfLand: number = 0;
 
 document.head.innerHTML = `
   <title>Adira's D1 Project</title>
@@ -110,9 +110,9 @@ document.body.innerHTML = `
       <h3>You're a vampire! Get more blood to become stronger!</h3>
     </div>
     <div class = "smallerQuarter">
-      <p>🦇: <span id="batCounter">${numberOfBats}</span>
-       🧛: <span id="friendCounter">${numberOfFriends}</span>
-       🏰: <span id="landCounter">${numberOfLand}</span></p>
+      <p>🦇: <span id="batCounter">0</span>
+       🧛: <span id="friendCounter">0</span>
+       🏰: <span id="landCounter">0</span></p>
     </div>
   </div>
   <div class = "flex">
@@ -153,6 +153,20 @@ const autoInfoButton = document.getElementById("autoClickerInfo")!; // vampire b
 const handsInfoButton = document.getElementById("extraHandsInfo")!; // friends shop section
 const landInfoButton = document.getElementById("DesecrationInfo")!; // land shop section
 
+interface ShopItem {
+  basePrice: number;
+  growthRate: number;
+  count: number;
+  priceIncreaseFactor: number;
+  element: HTMLElement;
+  priceElement: HTMLElement;
+  button: HTMLElement;
+  unlockThreshold: number;
+  displayInfo: HTMLElement;
+  currentPrice: () => number;
+}
+
+/*
 const autoBatButton = document.getElementById("purchaseBat")!; // buy button (needs to be changed for each item)
 const batElement = document.getElementById("batCounter")!; // numberOfBats
 const batPriceElement = document.getElementById("batPrice")!; // starts at 10
@@ -164,22 +178,6 @@ const friendPriceElement = document.getElementById("friendPrice")!; // starts at
 const autoLandButton = document.getElementById("purchaseLand")!; // buy button (needs to be changed for each item)
 const landElement = document.getElementById("landCounter")!; // numberOfFriends
 const landPriceElement = document.getElementById("landPrice")!; // starts at 250
-
-//unlock the shop items
-clickMeButton.addEventListener("click", () => {
-  counter++;
-  counterElement.textContent = counter.toString();
-  //shops
-  if (counter >= 10) {
-    autoInfoButton.style.display = "flex";
-  }
-  if (counter >= 100) {
-    handsInfoButton.style.display = "flex";
-  }
-  if (counter >= 250) {
-    landInfoButton.style.display = "flex";
-  }
-});
 
 //where to buy the vampire bats
 let batClickerPrice = 10;
@@ -233,23 +231,107 @@ autoLandButton.addEventListener("click", () => {
       .toString();
   }
 });
+*/
 
-//auto clicker
-let t0: number = performance.now();
-console.log(t0);
-let t1: number = -1;
-function autoClicker() {
-  t1 = performance.now();
-  if (t1 - t0 >= 1000) {
-    counter += batGrowthRate;
-    counter += friendGrowthRate * 10;
-    counter += landGrowthRate * 100;
-    counterElement.textContent = counter.toString();
-    t0 = t1;
+const shopItems: Record<string, ShopItem> = {
+  bat: {
+    basePrice: 10,
+    growthRate: 1,
+    count: 0,
+    priceIncreaseFactor: 1.15,
+    element: document.getElementById("batCounter")!,
+    priceElement: document.getElementById("batPrice")!,
+    button: document.getElementById("purchaseBat")!,
+    unlockThreshold: 10,
+    displayInfo: autoInfoButton,
+    currentPrice() {
+      return Math.floor(this.basePrice * Math.pow(this.priceIncreaseFactor, this.count));
+    }
+  },
+  friend: {
+    basePrice: 100,
+    growthRate: 10,
+    count: 0,
+    priceIncreaseFactor: 1.15,
+    element: document.getElementById("friendCounter")!,
+    priceElement: document.getElementById("friendPrice")!,
+    button: document.getElementById("purchaseFriend")!,
+    unlockThreshold: 100,
+    displayInfo: handsInfoButton,
+    currentPrice() {
+      return Math.floor(this.basePrice * Math.pow(this.priceIncreaseFactor, this.count));
+    }
+  },
+  land: {
+    basePrice: 250,
+    growthRate: 100,
+    count: 0,
+    priceIncreaseFactor: 1.15,
+    element: document.getElementById("landCounter")!,
+    priceElement: document.getElementById("landPrice")!,
+    button: document.getElementById("purchaseLand")!,
+    unlockThreshold: 250,
+    displayInfo: landInfoButton,
+    currentPrice() {
+      return Math.floor(this.basePrice * Math.pow(this.priceIncreaseFactor, this.count));
+    }
+  }
+};
+
+Object.entries(shopItems).forEach(([id, item]) => {
+  console.log(id);
+  item.button.addEventListener("click", () => {
+    const price = item.currentPrice();
+    if (counter >= price) {
+      counter -= price;
+      item.count++;
+      cps += item.growthRate;
+      counterElement.textContent = counter.toString();
+      cpsElement.textContent = cps.toString();
+      item.element.textContent = item.count.toString();
+      item.priceElement.textContent = shopItems[item === shopItems.bat ? "bat" : item === shopItems.friend ? "friend" : "land"].currentPrice().toString();
+    }
+  });
+});
+
+//unlock the shop items
+clickMeButton.addEventListener("click", () => {
+  counter++;
+  counterElement.textContent = counter.toString();
+  //shops
+  if (counter >= 10) {
+    autoInfoButton.style.display = "flex";
   }
   if (counter >= 100) {
     handsInfoButton.style.display = "flex";
   }
+  if (counter >= 250) {
+    landInfoButton.style.display = "flex";
+  }
+});
+
+//auto clicker
+let t0: number = performance.now();
+console.log(t0);
+function autoClicker() {
+  const t1 = performance.now();
+  if (t1 - t0 >= 1000) {
+    // Passive income
+    counter += shopItems.bat.growthRate * shopItems.bat.count;
+    counter += shopItems.friend.growthRate * shopItems.friend.count;
+    counter += shopItems.land.growthRate * shopItems.land.count;
+    counterElement.textContent = counter.toString();
+    t0 = t1;
+  }
+
+  // Unlock shops based on counter
+  Object.values(shopItems).forEach(item => {
+    if (counter >= item.unlockThreshold) {
+      item.displayInfo.style.display = "flex";
+    }
+  });
+
   requestAnimationFrame(autoClicker);
 }
+
 requestAnimationFrame(autoClicker);
