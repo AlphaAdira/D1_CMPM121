@@ -1,14 +1,12 @@
 // images
 import batImage from "./bat.png";
 import friendImage from "./friends.png";
-// art credits to https://www.instagram.com/neccodealer
 import landImage from "./land.png";
-// build made by a friend of mine (i don't have a social for them)
 import farmImage from "./farm.png";
 import scissorImage from "./scissors.png";
-// credit a friend of mine. The scissors belong to them
 import bloodImage from "./blood.webp";
 import iconImage from "./vampire_au.png";
+// Asset credits in CREDITS.md
 
 // pre-set changable variables
 let counter = 0;
