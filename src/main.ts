@@ -171,6 +171,10 @@ const landInformation = document.getElementById("DesecrationInfo")!; // land sho
 const farmInformation = document.getElementById("FarmInfo")!; // farm shop section
 const humanInformation = document.getElementById("HumanInfo")!; // human shop section
 
+///////////////////////
+// SOURCES OF INCOME //
+///////////////////////
+
 // shops' interfaces
 interface ShopItem {
   basePrice: number;
@@ -294,23 +298,6 @@ Object.entries(shopItems).forEach(([id, item]) => {
   });
 });
 
-// unlock the shop items
-function shopUnlock() {
-  Object.values(shopItems).forEach((item) => {
-    if (counter >= item.unlockThreshold) {
-      item.displayInfo.style.display = "flex";
-    }
-  });
-}
-
-// manual click button
-clickMeButton.addEventListener("click", () => {
-  counter++;
-  counterElement.textContent = counter.toString();
-
-  shopUnlock();
-});
-
 // auto clicker
 let t0: number = performance.now();
 function autoClicker() {
@@ -328,5 +315,21 @@ function autoClicker() {
 
   requestAnimationFrame(autoClicker);
 }
-
 requestAnimationFrame(autoClicker);
+
+// manual click button
+clickMeButton.addEventListener("click", () => {
+  counter++;
+  counterElement.textContent = counter.toString();
+
+  shopUnlock();
+});
+
+// unlock the shop items
+function shopUnlock() {
+  Object.values(shopItems).forEach((item) => {
+    if (counter >= item.unlockThreshold) {
+      item.displayInfo.style.display = "flex";
+    }
+  });
+}
