@@ -313,7 +313,6 @@ clickMeButton.addEventListener("click", () => {
 
 // auto clicker
 let t0: number = performance.now();
-console.log(t0);
 function autoClicker() {
   const t1 = performance.now();
   if (t1 - t0 >= 1000) {
