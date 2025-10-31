@@ -54,23 +54,17 @@ p {
 .flex {
   display: flex;
 }
-#SpawnBatInfo {
-  display: none;
+.InfoBox {
+  display: flex;
 }
-#extraHandsInfo {
-  display: none;
+.locked {
+  opacity: 0.5;
 }
-#DesecrationInfo {
-  display: none;
-}
-#FarmInfo {
-  display: none;
-}
-#HumanInfo {
-  display: none;
+.unlocked {
+  opacity: 1;
 }
 /* shop buttons (buy class) */
-.buy {
+.shop {
   width: 100px;
   height: 100px;
 }
@@ -81,4 +75,7 @@ p {
 .buy:active {
   transform: scale(0.9);
   cursor: pointer;
+}
+.nobuy {
+  cursor: not-allowed;
 }

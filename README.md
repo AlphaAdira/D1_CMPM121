@@ -4,7 +4,7 @@ For this project, I created a incremental game using TypeScript, Vite, and moder
 
 # Things I want to add from other people's games
 
-- make shop items visible without them being available and not clickable when not available
+- make shop items visible without them being available and not clickable when not available ✅
   -- taken from various people check out everyone else's demos
 - Make things make sounds when clicked on
   -- this idea was taken from mlau16's cat-themed clicker
