@@ -1,3 +1,5 @@
+import "./style.css";
+
 // images
 import batImage from "./bat.png";
 import friendImage from "./friends.png";
@@ -11,95 +13,6 @@ import iconImage from "./vampire_au.png";
 // pre-set changable variables
 let counter = 0;
 let cps = 0;
-
-document.head.innerHTML = `
-  <title>Adira's D1 Project</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      color: #6b0004ff;
-      text-align: center;
-      margin-top: 2rem;
-      background: #737373ff;
-      overflow: hidden;
-    }
-    p {
-      font-size: 1.2rem;
-    }
-    #vampireIcon {
-      width: 120px;
-      height: 100px;
-    }
-/* div sizes */
-    #top {
-      width: 100vw;
-      height: 20vh;
-    }
-    .half {
-      width: 50vw;
-    }
-    .biggestQuarter {
-      width: 68vw
-    }
-    .biggerQuarter {
-      width: 33vw;
-    }
-    .smallerQuarter {
-      width: 16vw;
-    }
-
-/* icon player clicks on */
-    #increment {
-      background: none;
-      border: none;
-    }
-    .icon {
-      width: 300px;
-      height: 300px;
-    }
-    .icon:hover {
-      transform: scale(1.1);
-      cursor: pointer;
-    }
-    .icon:active {
-      transform: scale(0.9);
-      cursor: pointer;
-    }
-
-/* shop items (display) */
-    .flex {
-      display: flex
-    }
-    #SpawnBatInfo {
-      display: none;
-    }
-    #extraHandsInfo {
-      display: none;
-    }
-    #DesecrationInfo {
-      display: none;
-    }
-    #FarmInfo {
-      display: none;
-    }
-    #HumanInfo {
-      display: none;
-
-/* shop buttons (buy class) */
-    .buy {
-      width: 100px;
-      height: 100px;
-    }
-    .buy:hover {
-      transform: scale(1.1);
-      cursor: pointer;
-    }
-    .buy:active {
-      transform: scale(0.9);
-      cursor: pointer;
-    }
-  </style>
-`;
 
 document.body.innerHTML = `
   <div id = "top" class = "flex">
