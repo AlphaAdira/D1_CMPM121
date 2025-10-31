@@ -1,6 +1,5 @@
+// imports
 import "./style.css";
-
-// images
 import batImage from "./bat.png";
 import friendImage from "./friends.png";
 import landImage from "./land.png";
