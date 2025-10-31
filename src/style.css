@@ -37,8 +37,8 @@ p {
   border: none;
 }
 .icon {
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   filter: drop-shadow(0px 0px 5px #000000aa);
 }
 .icon:hover {
@@ -67,6 +67,7 @@ p {
 .shop {
   width: 100px;
   height: 100px;
+  border-radius: 10px;
 }
 .buy:hover {
   transform: scale(1.1);

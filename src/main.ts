@@ -1,11 +1,11 @@
 // imports
-import "./style.css";
 import batImage from "./bat.png";
+import bloodImage from "./blood.webp";
+import farmImage from "./farm.png";
 import friendImage from "./friends.png";
 import landImage from "./land.png";
-import farmImage from "./farm.png";
 import scissorImage from "./scissors.png";
-import bloodImage from "./blood.webp";
+import "./style.css";
 import iconImage from "./vampire_au.png";
 // Asset credits in CREDITS.md
 
@@ -82,6 +82,24 @@ const handsInformation = document.getElementById("extraHandsInfo")!; // friends 
 const landInformation = document.getElementById("DesecrationInfo")!; // land shop section
 const farmInformation = document.getElementById("FarmInfo")!; // farm shop section
 const humanInformation = document.getElementById("HumanInfo")!; // human shop section
+
+// animated
+clickMeButton.animate(
+  [
+    { filter: "brightness(1) saturate(1)" },
+    { filter: "brightness(1.2) saturate(1.4)" },
+    { filter: "brightness(1) saturate(1)" },
+  ],
+  {
+    duration: 1500,
+    iterations: Infinity,
+  },
+);
+document.body.animate(
+  [{ backgroundPosition: "0% 50%" }, { backgroundPosition: "100% 50%" }, {
+    backgroundPosition: "0% 50%",
+  }],
+);
 
 ///////////////////////
 // SOURCES OF INCOME //
