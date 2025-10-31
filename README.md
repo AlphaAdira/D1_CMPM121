@@ -2,7 +2,7 @@
 
 For this project, I created a incremental game using TypeScript, Vite, and modern web development practices.
 
-# Things I want to add from other people's games
+# Things I wanted from other people's games
 
 - make shop items visible without them being available and not clickable when not available ✅
   -- taken from various people check out everyone else's demos
@@ -11,7 +11,7 @@ For this project, I created a incremental game using TypeScript, Vite, and moder
 - Make a pulsing effect ✅
   -- this idea was taken from matthewkin's stars-themed clicker
 - Make icons come off the button when clicked
-- this idea was taken from mrpoopers's banana-themed clicker
+-- this idea was taken from mrpoopers's banana-themed clicker
 
 # Things I wanted to add/change but didn't get to
 
