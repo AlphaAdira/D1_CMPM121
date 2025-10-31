@@ -1,11 +1,14 @@
 // imports
+import "./style.css";
+// TODO: add slashing sound effects when clicking on the main button
+// import slashSound from "./slash.mp3";
+// images
 import batImage from "./bat.png";
 import bloodImage from "./blood.webp";
 import farmImage from "./farm.png";
 import friendImage from "./friends.png";
 import landImage from "./land.png";
 import scissorImage from "./scissors.png";
-import "./style.css";
 import iconImage from "./vampire_au.png";
 // Asset credits in CREDITS.md
 
@@ -82,23 +85,12 @@ const handsInformation = document.getElementById("extraHandsInfo")!; // friends 
 const landInformation = document.getElementById("DesecrationInfo")!; // land shop section
 const farmInformation = document.getElementById("FarmInfo")!; // farm shop section
 const humanInformation = document.getElementById("HumanInfo")!; // human shop section
+// audio
+// const slashAudio = new Audio(slashSound);
 
 ///////////////////////
 // SOURCES OF INCOME //
 ///////////////////////
-
-// animated click button
-clickMeButton.animate(
-  [
-    { filter: "brightness(1) saturate(1)" },
-    { filter: "brightness(1.2) saturate(1.4)" },
-    { filter: "brightness(1) saturate(1)" },
-  ],
-  {
-    duration: 1500,
-    iterations: Infinity,
-  },
-);
 
 // shops' interfaces
 interface ShopItem {
@@ -249,6 +241,10 @@ clickMeButton.addEventListener("click", () => {
 
   shopUnlock();
 
+  // slashAudio.currentTime = 0;
+  // slashAudio.play();
+
+  // create blood dripping effect
   const bloodSpill = document.createElement("p");
   bloodSpill.innerHTML = "🩸";
   bloodSpill.className = "dripping-blood";
@@ -264,6 +260,19 @@ clickMeButton.addEventListener("click", () => {
     bloodSpill.remove();
   }, 1000);
 });
+
+// animate the button
+clickMeButton.animate(
+  [
+    { filter: "brightness(1) saturate(1)" },
+    { filter: "brightness(1.2) saturate(1.4)" },
+    { filter: "brightness(1) saturate(1)" },
+  ],
+  {
+    duration: 1500,
+    iterations: Infinity,
+  },
+);
 
 // unlock the shop items
 function shopUnlock() {
