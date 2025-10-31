@@ -1,7 +1,6 @@
 // imports
 import "./style.css";
-// TODO: add slashing sound effects when clicking on the main button
-// import slashSound from "./slash.mp3";
+import slashSound from "./slash.mp3";
 // images
 import batImage from "./bat.png";
 import bloodImage from "./blood.webp";
@@ -86,7 +85,7 @@ const landInformation = document.getElementById("DesecrationInfo")!; // land sho
 const farmInformation = document.getElementById("FarmInfo")!; // farm shop section
 const humanInformation = document.getElementById("HumanInfo")!; // human shop section
 // audio
-// const slashAudio = new Audio(slashSound);
+const slashAudio = new Audio(slashSound);
 
 ///////////////////////
 // SOURCES OF INCOME //
@@ -241,8 +240,8 @@ clickMeButton.addEventListener("click", () => {
 
   shopUnlock();
 
-  // slashAudio.currentTime = 0;
-  // slashAudio.play();
+  slashAudio.currentTime = 0;
+  slashAudio.play();
 
   // create blood dripping effect
   const bloodSpill = document.createElement("p");
