@@ -8,6 +8,7 @@ For this project, I created a incremental game using TypeScript, Vite, and moder
   -- taken from various people check out everyone else's demos
 - Make things make sounds when clicked on
   -- this idea was taken from mlau16's cat-themed clicker
+  (todo: find audio[s])
 - Make a pulsing effect ✅
   -- this idea was taken from matthewkin's stars-themed clicker
 - Make icons come off the button when clicked

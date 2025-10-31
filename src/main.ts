@@ -83,7 +83,11 @@ const landInformation = document.getElementById("DesecrationInfo")!; // land sho
 const farmInformation = document.getElementById("FarmInfo")!; // farm shop section
 const humanInformation = document.getElementById("HumanInfo")!; // human shop section
 
-// animated
+///////////////////////
+// SOURCES OF INCOME //
+///////////////////////
+
+// animated click button
 clickMeButton.animate(
   [
     { filter: "brightness(1) saturate(1)" },
@@ -95,15 +99,6 @@ clickMeButton.animate(
     iterations: Infinity,
   },
 );
-document.body.animate(
-  [{ backgroundPosition: "0% 50%" }, { backgroundPosition: "100% 50%" }, {
-    backgroundPosition: "0% 50%",
-  }],
-);
-
-///////////////////////
-// SOURCES OF INCOME //
-///////////////////////
 
 // shops' interfaces
 interface ShopItem {
