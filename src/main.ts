@@ -248,6 +248,21 @@ clickMeButton.addEventListener("click", () => {
   counterElement.textContent = counter.toString();
 
   shopUnlock();
+
+  const bloodSpill = document.createElement("p");
+  bloodSpill.innerHTML = "🩸";
+  bloodSpill.className = "dripping-blood";
+
+  const img = clickMeButton.querySelector("img")!;
+  const rect = img.getBoundingClientRect();
+  bloodSpill.style.left =
+    Math.floor(Math.random() * (rect.right - rect.left + 1)) + rect.left + "px";
+  bloodSpill.style.top = (rect.bottom / 2) + (rect.top / 2) + "px";
+  document.body.appendChild(bloodSpill);
+
+  setTimeout(() => {
+    bloodSpill.remove();
+  }, 1000);
 });
 
 // unlock the shop items

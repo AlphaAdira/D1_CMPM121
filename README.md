@@ -11,7 +11,7 @@ For this project, I created a incremental game using TypeScript, Vite, and moder
   (todo: find audio[s])
 - Make a pulsing effect ✅
   -- this idea was taken from matthewkin's stars-themed clicker
-- Make icons come off the button when clicked
+- Make icons come off the button when clicked ✅
   -- this idea was taken from mrpoopers's banana-themed clicker
 
 # Things I wanted to add/change but didn't get to

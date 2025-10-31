@@ -50,6 +50,26 @@ p {
   cursor: pointer;
 }
 
+/* ===== Floating Banana ===== */
+.dripping-blood {
+  position: absolute;
+  width: 50px;
+  pointer-events: none;
+  z-index: 1000;
+  animation: floatDown 1s ease-out forwards;
+}
+
+@keyframes floatDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(150px) scale(0.8);
+  }
+}
+
 /* shop items (display) */
 .flex {
   display: flex;
@@ -63,7 +83,7 @@ p {
 .unlocked {
   opacity: 1;
 }
-/* shop buttons (buy class) */
+/* shop buttons */
 .shop {
   width: 100px;
   height: 100px;
