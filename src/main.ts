@@ -250,9 +250,18 @@ clickMeButton.addEventListener("click", () => {
 
   const img = clickMeButton.querySelector("img")!;
   const rect = img.getBoundingClientRect();
-  bloodSpill.style.left =
-    Math.floor(Math.random() * (rect.right - rect.left + 1)) + rect.left + "px";
-  bloodSpill.style.top = (rect.bottom / 2) + (rect.top / 2) + "px";
+
+  // Calculate center position of the button
+  const centerY = rect.top + (rect.bottom - rect.top) / 2;
+
+  // Add some randomness to x-coordinate (between 25% and 75% of button width)
+  const randomOffset = (rect.right - rect.left) * (0.25 + Math.random() * 0.5);
+  const randomizedX = rect.left + randomOffset;
+
+  // Position the blood drop at the center of the button with some horizontal randomness
+  bloodSpill.style.left = randomizedX + "px";
+  bloodSpill.style.top = centerY + "px";
+
   document.body.appendChild(bloodSpill);
 
   setTimeout(() => {
